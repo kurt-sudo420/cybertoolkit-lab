@@ -13,12 +13,17 @@ IMPORTANT - scope of use:
     the law. When in doubt, don't.
 """
 
+import argparse
 import concurrent.futures
 import hashlib
 import ipaddress
 import secrets
 import socket
 import string
+import sys
+
+# Version string - defined in one place only
+__version__ = "1.1.0"
 
 
 # --------------------------------------------------------------------------
@@ -228,6 +233,15 @@ MENU = {
 
 
 def main():
+    parser = argparse.ArgumentParser(description="CyberToolkit - a collection of network security utilities.")
+    parser.add_argument("--version", action="store_true", help="Show version and exit")
+    
+    args = parser.parse_args()
+    
+    if args.version:
+        print(f"CyberToolkit {__version__}")
+        sys.exit(0)
+        
     while True:
         print("\nCyberToolkit")
         print("-" * 21)
